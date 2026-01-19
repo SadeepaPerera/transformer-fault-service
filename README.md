@@ -42,15 +42,14 @@ Bounding boxes are returned as **normalized coordinates** and should be rendered
 
 /api/transformer/analyze
 
-
 ### Request body
 ```json
 {
   "imageUrl": "https://your-blob-url/image.jpg"
 }
-
-Response (example)
-
+```
+### Response (example)
+```json
 [
   {
     "fault_type": "Loose lug Connection",
@@ -59,54 +58,58 @@ Response (example)
     "description": "Intense localized hotspot detected at a connection point."
   }
 ]
-
+```
 If no faults are detected:
-
+```json
 []
-
-Environment Variable (REQUIRED)
+```
+### Environment Variable (REQUIRED)
 
 The Gemini API key must NOT be hardcoded.
 
 Set it as an environment variable:
 
-Windows (PowerShell as Administrator)
+### Windows (PowerShell as Administrator)
+```json
 setx GOOGLE_API_KEY "YOUR_API_KEY_HERE"
-
+```
 
 Restart IntelliJ / application after setting the key.
 
-How to run locally
-Prerequisites
+---
+### How to run locally
+**Prerequisites**
 
-Java 17 or later
+- Java 17 or later
 
-Maven (included via wrapper)
+- Maven (included via wrapper)
 
-Run
+**Run**
+```json
 ./mvnw spring-boot:run
-
+```
 
 or run TransformerFaultServiceApplication from IntelliJ.
 
 The service starts on:
-
+```json
 http://localhost:8080
-
+```
 
 Health check:
-
+```json
 http://localhost:8080/actuator/health
+```
+---
+### Notes for frontend / main backend developers
 
-Notes for frontend / main backend developers
+- Send only the image URL
 
-Send only the image URL
+- The service handles downloading and Gemini calls
 
-The service handles downloading and Gemini calls
+- Use bbox_normalized values to draw boxes on the frontend
 
-Use bbox_normalized values to draw boxes on the frontend
+- Coordinates are normalized (0–1 range)
 
-Coordinates are normalized (0–1 range)
-
-The service returns pure JSON only
+- The service returns pure JSON only
 
