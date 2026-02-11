@@ -14,7 +14,7 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -41,3 +41,19 @@ Thumbs.db
 
 # Environment files (never upload secrets)
 .env
+.env.*
+*.env
+
+# --- Spring Boot local secrets (DO NOT COMMIT) ---
+src/main/resources/application-local.yml
+src/main/resources/application-dev.yml
+src/main/resources/application-prod.yml
+src/main/resources/application-secrets.yml
+src/main/resources/application-*.local.yml
+
+# Optional: if you ever add local property files
+src/main/resources/application-local.properties
+src/main/resources/application-secrets.properties
+
+# Optional: IntelliJ out folder
+out/
